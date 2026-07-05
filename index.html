@@ -1,6 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17909425594"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-17909425594');
+</script>
+<!-- Event snippet for Contato conversion (clique no WhatsApp) -->
+<script>
+  function trackWhatsappConversion(url){
+    var navigated = false;
+    function goToUrl(){
+      if (!navigated) {
+        navigated = true;
+        window.location = url;
+      }
+    }
+    gtag('event', 'conversion', {
+        'send_to': 'AW-17909425594/E17XCIGdrO4bELrL8NtC',
+        'event_callback': goToUrl
+    });
+    setTimeout(goToUrl, 1000);
+  }
+  document.addEventListener('click', function(e){
+    var link = e.target.closest('a[href*="wa.me"]');
+    if (link) {
+      e.preventDefault();
+      trackWhatsappConversion(link.href);
+    }
+  });
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Mayra Alkimim - Veterinária a Domicílio. Atendimento veterinário premium no conforto da sua casa. Consultas, vacinas, exames, cirurgias e emergências para cães, gatos e animais silvestres.">
