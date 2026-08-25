@@ -39,6 +39,21 @@
     'phone_conversion_number': '48988793582'
   });
 </script>
+  <!-- Event snippet for phone click conversion (Ligar Agora button) -->
+  <script>
+    function trackPhoneConversion(url){
+      var navigated = false;
+      function goToUrl(){
+        if (!navigated) { navigated = true; window.location = url; }
+      }
+      gtag('event', 'conversion', {'send_to': 'AW-17909425594/U_l6CLOHmOccELrL8NtC', 'event_callback': goToUrl});
+      setTimeout(goToUrl, 1000);
+    }
+    document.addEventListener('click', function(e){
+      var link = e.target.closest('a[href^="tel:"]');
+      if (link) { e.preventDefault(); trackPhoneConversion(link.href); }
+    });
+  </script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
