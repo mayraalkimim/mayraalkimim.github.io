@@ -132,6 +132,18 @@ nav.scrolled .hamburger span{background:var(--bordo)}
 .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1800&q=80&auto=format&fit=crop') center/cover no-repeat;opacity:0.18}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(67,89,58,0.95) 0%,rgba(91,121,77,0.7) 60%,rgba(91,121,77,0.2) 100%)}
 .hero-content{position:relative;z-index:2;max-width:700px;padding:120px 0 80px}
+.hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:60px;align-items:center}
+.hero-grid .hero-content{max-width:none}
+.hero-visual{position:relative;z-index:2;padding:120px 0 80px}
+.hero-photo{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5;box-shadow:0 30px 80px rgba(0,0,0,0.35);border:4px solid rgba(255,255,255,0.15)}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-pet{position:absolute;width:92px;height:92px;border-radius:50%;overflow:hidden;border:4px solid var(--white);box-shadow:0 10px 30px rgba(0,0,0,0.3);animation:petFloat 5s ease-in-out infinite;z-index:3}
+.hero-pet img{width:100%;height:100%;object-fit:cover}
+.hero-pet.p1{top:150px;left:-40px}
+.hero-pet.p2{top:48%;right:-36px;animation-delay:1.2s}
+.hero-pet.p3{bottom:150px;left:-30px;animation-delay:2.4s}
+.hero-pet.p4{bottom:70px;right:40px;width:78px;height:78px;animation-delay:3.6s}
+@keyframes petFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(169,124,52,0.15);border:1px solid rgba(169,124,52,0.4);border-radius:50px;padding:8px 20px;margin-bottom:32px}
 .hero-badge span{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--dourado)}
 .hero-badge::before{content:'✦';color:var(--dourado);font-size:0.7rem}
@@ -150,6 +162,9 @@ nav.scrolled .hamburger span{background:var(--bordo)}
 .emotional-image-wrap{position:relative}
 .emotional-image{border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow-lg)}
 .emotional-image img{width:100%;height:100%;object-fit:cover;transition:var(--transition)}
+.emotional-mosaic{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:3fr 2fr;gap:12px;background:transparent;box-shadow:none;border-radius:0}
+.emotional-mosaic .tile{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg)}
+.emotional-mosaic .tile.big{grid-column:1 / 3}
 .emotional-image:hover img{transform:scale(1.03)}
 .emotional-accent{position:absolute;bottom:-24px;right:-24px;width:200px;height:200px;background:var(--bordo);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;box-shadow:var(--shadow-lg)}
 .emotional-accent-num{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:700;line-height:1;color:var(--dourado)}
@@ -301,6 +316,9 @@ footer{background:var(--grafite);color:rgba(255,255,255,0.7);padding:60px 0 28px
 .services-grid{grid-template-columns:repeat(2,1fr)}
 .emotional-grid,.sobre-grid,.map-grid{grid-template-columns:1fr;gap:40px}
 .emotional-image,.sobre-img{aspect-ratio:16/9}
+.emotional-image.emotional-mosaic{aspect-ratio:4/5;max-width:480px;margin:0 auto}
+.hero-grid{grid-template-columns:1fr;gap:0}
+.hero-visual{padding:0 0 70px;max-width:420px;margin:0 auto;width:100%}
 .emotional-accent{bottom:-16px;right:-8px}
 .sobre-badge{left:-8px}
 .sobre-crmv{right:-8px}
@@ -314,7 +332,9 @@ footer{background:var(--grafite);color:rgba(255,255,255,0.7);padding:60px 0 28px
 .nav-links,.nav-cta{display:none}
 .hamburger{display:flex}
 h1{font-size:2.4rem}
-.hero-content{padding:100px 0 60px}
+.hero-content{padding:100px 0 40px}
+.hero-pet{width:66px;height:66px;border-width:3px}
+.hero-pet.p1{top:24px;left:-10px}.hero-pet.p2{right:-10px}.hero-pet.p3{bottom:110px;left:-10px}.hero-pet.p4{width:58px;height:58px;bottom:20px;right:20px}
 .hero-stats{gap:24px;flex-wrap:wrap}
 .services-grid{grid-template-columns:1fr}
 .benefits-grid{grid-template-columns:1fr}
@@ -374,6 +394,7 @@ h1{font-size:2.4rem}
 <div class="hero-bg" aria-hidden="true"></div>
 <div class="hero-overlay" aria-hidden="true"></div>
 <div class="container">
+<div class="hero-grid">
   <div class="hero-content">
     <div class="hero-badge reveal"><span>Atendimento Premium & Humanizado</span></div>
     <h1 class="hero-title reveal">Cuidado veterinário<br>no <em>conforto</em><br>do seu lar.</h1>
@@ -392,6 +413,16 @@ h1{font-size:2.4rem}
       <div><span class="hero-stat-number">24h</span><span class="hero-stat-label">Emergências</span></div>
     </div>
   </div>
+  <div class="hero-visual reveal-right">
+    <div class="hero-photo">
+      <img src="mayra-sobre.jpg" alt="Dra. Mayra Alkimim, médica veterinária">
+    </div>
+    <div class="hero-pet p1"><img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&q=75&auto=format&fit=crop" alt="Cachorro feliz"></div>
+    <div class="hero-pet p2"><img src="https://images.unsplash.com/photo-1596854372745-0906a0593bca?w=200&q=75&auto=format&fit=crop" alt="Gato"></div>
+    <div class="hero-pet p3"><img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=200&q=75&auto=format&fit=crop" alt="Periquito verde"></div>
+    <div class="hero-pet p4"><img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?w=200&q=75&auto=format&fit=crop" alt="Hamster"></div>
+  </div>
+</div>
 </div>
 </section>
 <!-- EMOTIONAL -->
@@ -400,8 +431,10 @@ h1{font-size:2.4rem}
 <div class="container">
 <div class="emotional-grid">
   <div class="emotional-image-wrap reveal-left">
-    <div class="emotional-image">
-      <img src="mayra-sobre.jpg" alt="Veterinária atendendo pet em domicílio" loading="lazy">
+    <div class="emotional-image emotional-mosaic">
+      <div class="tile big"><img src="https://images.unsplash.com/photo-1573435567032-ff5982925350?w=900&q=75&auto=format&fit=crop" alt="Cachorro e gato juntos em casa" loading="lazy"></div>
+      <div class="tile"><img src="https://images.unsplash.com/photo-1452570053594-1b985d6ea890?w=500&q=75&auto=format&fit=crop" alt="Arara-canindé" loading="lazy"></div>
+      <div class="tile"><img src="https://images.unsplash.com/photo-1588331086909-9861b6e15a30?w=500&q=75&auto=format&fit=crop" alt="Hamster" loading="lazy"></div>
     </div>
     <div class="emotional-accent">
       <span class="emotional-accent-num">♥</span>
